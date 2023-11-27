@@ -40,6 +40,7 @@ SudokuVerifier v = new SudokuVerifier();
 	
 	@Test
 	public void testUnicodeChars() {
+		// Test characters next to numbers
 		String slash_first = "/17369825632158947958724316825437169791586432346912758289643571573291684164875293";
 		String slash_last = "41736982563215894795872431682543716979158643234691275828964357157329168416487529/";
 		
@@ -56,6 +57,7 @@ SudokuVerifier v = new SudokuVerifier();
 		a = v.verify(colon_last);
 		assertEquals("colon_last string", 1, a);
 		
+		// Test other unicode characters
 		String math = "Ω≈ç√∫˜µ≤≥÷32158947958724316825437169791586432346912758289643571573291684164875293";
 		String arabic = "ٵڊڼڋ69825632158947958724316825437169791586432346912758289643571573291684164875293";
 		
@@ -73,7 +75,7 @@ SudokuVerifier v = new SudokuVerifier();
 	}
 	
 	@Test
-	public void testOddStrings() {
+	public void testStringsWithSpaces() {
 		String singleSpace = " ";
 		String multipleSpaces = "   ";
 		String leadingSpaces = "417369825632158947958724316825437169791586432346912758289643571573291684164875   ";
@@ -112,7 +114,7 @@ SudokuVerifier v = new SudokuVerifier();
 	}
 	
 	@Test
-	public void testInvalidRow() {
+	public void testRowDuplicates() {
 		String firstRowHasDiplicate = "617369825432158947958724316825437169791586432346912758289643571573291684164875293";
 		String lastRowHasDiplicate = "417369825632158947958724316825437169791586432346912758289643571573291683164875294";
 		
@@ -123,7 +125,7 @@ SudokuVerifier v = new SudokuVerifier();
 	}
 	
 	@Test
-	public void testInvalidColumn() {
+	public void testColumnDuplicates() {
 		String firstColumnHasDiplicate = "147369825632158947958724316825437169791586432346912758289643571573291684164875293";
 		String lastColumnHasDiplicate = "417369825632158947958724316825437169791586432346912758289643571573291684164875239";
 		
