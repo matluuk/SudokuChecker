@@ -64,6 +64,29 @@ SudokuVerifier v = new SudokuVerifier();
 		assertEquals("math string", 1, a);
 		a = v.verify(arabic);
 		assertEquals("arabic string", 1, a);
+		
+
+		String accentedChars = "àáâãäåçèéêëìíîðñòôõö8724316825437169791586432346912758289643571573291684164875293";
+		
+		a = v.verify(accentedChars);
+		assertEquals("accentedChars string", 1, a);
+	}
+	
+	@Test
+	public void testOddStrings() {
+		String singleSpace = " ";
+		String multipleSpaces = "   ";
+		String leadingSpaces = "417369825632158947958724316825437169791586432346912758289643571573291684164875   ";
+		String leadingSpaces2 = "417369825632158947958724316825437169791586432346912758289643571573291684164875293   ";
+		
+		int a = v.verify(singleSpace);
+		assertEquals("singleSpace string", -1, a);
+		a = v.verify(multipleSpaces);
+		assertEquals("multipleSpaces string", -1, a);
+		a = v.verify(leadingSpaces);
+		assertEquals("leadingSpaces string", 1, a);
+		a = v.verify(leadingSpaces2);
+		assertEquals("leadingSpaces2 string", -1, a);
 	}
 	
 	@Test
